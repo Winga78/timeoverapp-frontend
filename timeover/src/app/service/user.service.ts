@@ -33,6 +33,9 @@ export class UserService {
     return this.http.post(`${this.API_URL}/auth/login`, {email : user.email , password:user.password}, this.optionRequete)
   }
 
+  getProfil() : Observable<any>{
+    return this.http.get<any>(`${this.API_URL}/auth/profile`)
+  }
 
   logout(){
     localStorage.removeItem('UserToken')

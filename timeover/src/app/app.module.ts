@@ -10,10 +10,23 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { TodoComponent } from './todo/todo.component';
 import { GametimeComponent } from './gametime/gametime.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './jwt.interceptor';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {NgFor, AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {CdkDrag,  CdkDragDrop,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem,} from '@angular/cdk/drag-drop';
+import { TodoStartComponent } from './todo-start/todo-start.component';
+import { TodoEndComponent } from './todo-end/todo-end.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +35,9 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     CalendarComponent,
     TodoComponent,
     GametimeComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    TodoStartComponent,
+    TodoEndComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +45,16 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     NgbModule,
     FullCalendarModule,
     HttpClientModule, 
-    FormsModule,
-   
+    FormsModule, BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
+    AsyncPipe,
+    CdkDrag,
+    CdkDropListGroup,
+    CdkDropList,
   ],
   providers: [ HttpClient, 
     { provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true }],

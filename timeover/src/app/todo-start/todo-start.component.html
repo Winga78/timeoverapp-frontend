@@ -1,0 +1,22 @@
+<ul>
+    <li *ngFor="let game of filteredOptions ; let x = index">
+        <div id = "game">
+         <span>{{ game.name }}</span>
+         <img src ="{{game.imageUrl}}" alt ="affiche"/> 
+         <button type="submit" class="btn btn-primary" (click)="UpdateTodoList(game)">todo</button>
+       </div>
+    </li>
+  
+  </ul>
+
+
+  
+    <input type="text" [formControl]="myControl" placeholder="Rechercher un jeu">
+    
+  
+  <div  *ngIf= "TodoGameList.length !== 0 ">
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let g of TodoGameList ; let x = index" cdkDrag>{{g.name}}</div>
+    </div>
+    </div>
+   

@@ -3,6 +3,6 @@ import { User } from "./user";
 export interface Todo {
     id?: string;
     name: string;
-    games?: Game[];
-    user: User;
+    games: Game[];
+    user: string;
 }

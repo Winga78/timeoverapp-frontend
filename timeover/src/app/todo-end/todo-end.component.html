@@ -1,0 +1,7 @@
+ 
+  <div  *ngIf= "TodoGameList.length !== 0 ">
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let g of TodoGameList ; let x = index" cdkDrag>{{g.name}}</div>
+    </div>
+    </div>
+   

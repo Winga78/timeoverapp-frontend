@@ -1,1 +1,10 @@
-<p>todo works!</p>
+
+<form>
+    <div class="form-group">
+        <label for="nom">nom</label>
+        <input [(ngModel)]= "todo.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="todoname" placeholder="todo">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="createTodo()">créer</button>
+</form>
+
+<app-search-bar></app-search-bar>

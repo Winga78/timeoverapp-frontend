@@ -13,5 +13,5 @@ export interface Game {
   
     gamePlayCompletionist: number
   
-    index?: number
+    index: number
   }
