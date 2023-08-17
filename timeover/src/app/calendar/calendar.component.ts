@@ -72,20 +72,20 @@ events : any[] = []
   }
 
   displayCalendar(){
-    const activity = this.route.snapshot.paramMap.get('activity');
-    this.calendarService.generateTimebygame(activity).subscribe(data=>{
+    const id = this.route.snapshot.paramMap.get('id');
+    this.calendarService.generateTimebygame(id).subscribe(data=>{
        
-       for(let i = 0 ; i < data.length ; i++){
-        for(let u = 0 ; u < data[i].dates_end.length; u++){
-            let res = new Date (data[i].start )
+    
+        for(let u = 0 ; u < data.dates_end.length; u++){
+            let res = new Date (data.start )
           let newres = res.setDate(res.getDate() + u)
-        let myevent = {title : data[i].game.name ,
+        let myevent = {title : data.game.name ,
            start : newres , 
-           end : data[i].dates_end[u]
+           end : data.dates_end[u]
           }
           this.events.push(myevent)
         }
-       }
+    
        this.calendarOptions.events = this.events;
        this.calendarOptions = { ...this.calendarOptions };
     });

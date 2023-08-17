@@ -27,8 +27,8 @@ export class TodoService {
     return this.http.patch<Todo>(`${this.API_URL}/todo/${id}`, {game : game} )
   }
 
-  getTodoByid(id :string) : Observable<Todo[]>{
-    return this.http.get<Todo[]>(`${this.API_URL}/todo/${id}`)
+  getTodoByid(id :string) : Observable<any[]>{
+    return this.http.get<any[]>(`${this.API_URL}/todo/${id}`)
   }
 
   updateGamePosition(id :string, newGames : Game[]){

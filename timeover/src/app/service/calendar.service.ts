@@ -11,7 +11,7 @@ export class CalendarService {
   private API_URL = environment.API_URL;
   constructor(private http : HttpClient) { }
 
-  generateTimebygame(activity : string | null): Observable<Calendar[]>{
-    return this.http.get<Calendar[]>(`${this.API_URL}/calendar/${activity}`)
+  generateTimebygame(id : string | null): Observable<Calendar>{
+    return this.http.get<Calendar>(`${this.API_URL}/calendar/${id}`)
   }
 }
