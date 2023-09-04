@@ -18,7 +18,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TodoStartComponent implements OnInit , OnDestroy {
   myControl = new FormControl();
   filteredOptions: Game[] = []
-  TodoGameList : any[][]  = []
+  TodoGameList : any  = []
   id = ''
   private eventSubscription: Subscription = new Subscription;
 
