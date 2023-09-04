@@ -1,7 +1,7 @@
 import { Game } from "./game";
 
 export interface Calendar {
-    id?: string;
+    _id?: string;
 
     activity: string;
   

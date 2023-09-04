@@ -8,6 +8,8 @@ import { Game } from '../Model/game';
 import frLocale from '@fullcalendar/core/locales/fr';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
+
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -90,8 +92,6 @@ events : any[] = []
        this.calendarOptions = { ...this.calendarOptions };
     });
 
-    console.log(this.events)
-    
   }
 
   

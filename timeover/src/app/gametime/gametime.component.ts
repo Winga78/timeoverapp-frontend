@@ -4,13 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../service/todo.service';
 import { UserService } from '../service/user.service';
 
+
 @Component({
   selector: 'app-gametime',
   templateUrl: './gametime.component.html',
   styleUrls: ['./gametime.component.css']
 })
 export class GametimeComponent implements OnInit {
-
   id : string = ''
   name : string = ''
   start : Date = new Date()
@@ -42,7 +42,6 @@ export class GametimeComponent implements OnInit {
 
   createGameTime(){
     this.gametimeService.createGameTime(this.id , this.name , this.start, this.end).subscribe((data)=>{
-      console.log(data)
       this.router.navigate(['calendar', data[0]._id]);
     })
    

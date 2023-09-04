@@ -14,4 +14,8 @@ export class CalendarService {
   generateTimebygame(id : string | null): Observable<Calendar>{
     return this.http.get<Calendar>(`${this.API_URL}/calendar/${id}`)
   }
+
+  lastCalendar(): Observable<Calendar[]>{
+    return this.http.get<Calendar[]>(`${this.API_URL}/calendar/`)
+  }
 }

@@ -27,6 +27,8 @@ import {CdkDrag,  CdkDragDrop,
   transferArrayItem,} from '@angular/cdk/drag-drop';
 import { TodoStartComponent } from './todo-start/todo-start.component';
 import { TodoEndComponent } from './todo-end/todo-end.component';
+import { IndexComponentComponent } from './index-component/index-component.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { TodoEndComponent } from './todo-end/todo-end.component';
     GametimeComponent,
     SearchBarComponent,
     TodoStartComponent,
-    TodoEndComponent
+    TodoEndComponent,
+    IndexComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { TodoEndComponent } from './todo-end/todo-end.component';
     CdkDrag,
     CdkDropListGroup,
     CdkDropList,
+    MatPaginatorModule,
   ],
   providers: [ HttpClient, 
     { provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true }],

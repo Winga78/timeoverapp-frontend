@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { User } from '../Model/user';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
+import { CalendarService } from '../service/calendar.service';
+import { co } from '@fullcalendar/core/internal-common';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class SignInComponent {
 
   constructor(
     private userService : UserService, 
+    private calendarService : CalendarService, 
     private route : Router
   ){}
   
@@ -29,7 +32,10 @@ export class SignInComponent {
        const token = data.toString()
        localStorage.setItem('UserToken', token);
        this.userService.userSubject.next(token)
-       this.route.navigateByUrl('calendar/Noir et blanc');
+       this.calendarService.lastCalendar().subscribe((data)=>{
+        this.route.navigateByUrl(`calendar/${data[0]._id}`);
+       })
+      
     })
   }
 }
