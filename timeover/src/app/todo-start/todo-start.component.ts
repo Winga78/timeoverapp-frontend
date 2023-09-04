@@ -1,11 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Game } from '../Model/game';
-import { Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged, first, switchMap } from 'rxjs';
 import { TodoService } from '../service/todo.service';
 import { UserService } from '../service/user.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+//Supprimer le component todostart et todoEnd, et ramener la barre de recherche dans SearchBar 
+//Créer un component todo pour afficher les élements de la todo
+//Stocker l'id d'un calendrier en localstorage lorsqu'il est crée et lorsqu'un selectionne un autre calendrier
+//Créer un tableau à deux dimenssions pour afficher les jeux dans le drop 
+//Créer un modal pour la création d'un calendrier et d'une todolist 
 @Component({
   selector: 'app-todo-start',
   templateUrl: './todo-start.component.html',
@@ -14,7 +18,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TodoStartComponent implements OnInit , OnDestroy {
   myControl = new FormControl();
   filteredOptions: Game[] = []
-  TodoGameList : any[]  = []
+  TodoGameList : any[][]  = []
   id = ''
   private eventSubscription: Subscription = new Subscription;
 
@@ -41,6 +45,7 @@ export class TodoStartComponent implements OnInit , OnDestroy {
     this.eventSubscription= this.todoService.getTodoByid(id).subscribe((data)=>{
         if(data.length != 0 ){
             for(let i=0 ; i < data[0].games.length ; i++){
+              
           this.TodoGameList.push(data[0].games[i])
          }
         }
