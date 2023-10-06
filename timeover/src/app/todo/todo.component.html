@@ -1,11 +1,12 @@
-<app-index-component>
-<form>
-    <div class="form-group">
-        <label for="nom">nom</label>
-        <input [(ngModel)]= "todo.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="todoname" placeholder="todo">
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="createTodo()">créer</button>
-</form>
-
-</app-index-component>
-<!-- <app-search-bar></app-search-bar> -->
+<app-new-todo></app-new-todo>
+<mat-card  *ngFor="let item of todo"; class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title> {{item.name}}</mat-card-title>
+    <mat-card-subtitle>{{item.games.length}} jeux </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-actions>
+    <button mat-button (click)="displayOneTodo(item.id)">VOIR</button>
+  </mat-card-actions>
+</mat-card>

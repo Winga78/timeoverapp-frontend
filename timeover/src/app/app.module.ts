@@ -12,7 +12,6 @@ import { GametimeComponent } from './gametime/gametime.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './jwt.interceptor';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -20,15 +19,22 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {CdkDrag,  CdkDragDrop,
-  CdkDropList,
-  CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem,} from '@angular/cdk/drag-drop';
+import {CdkDrag,  CdkDragDrop,CdkDropList,CdkDropListGroup,moveItemInArray, transferArrayItem,} from '@angular/cdk/drag-drop';
 import { TodoStartComponent } from './todo-start/todo-start.component';
 import { TodoEndComponent } from './todo-end/todo-end.component';
-import { IndexComponentComponent } from './index-component/index-component.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { DisplayMenu } from './menu-bar/pipes/display-menu.pipe';
+import { NewTodoComponent } from './todo/new-todo/new-todo.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { NewTodoFormComponent } from './todo/new-todo-form/new-todo-form.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+import { DetailTodoComponent } from './todo/detail-todo/detail-todo.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +43,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CalendarComponent,
     TodoComponent,
     GametimeComponent,
-    SearchBarComponent,
     TodoStartComponent,
     TodoEndComponent,
-    IndexComponentComponent
+    MenuBarComponent,
+    DisplayMenu,
+    NewTodoComponent,
+    NewTodoFormComponent,
+    DetailTodoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +69,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CdkDropListGroup,
     CdkDropList,
     MatPaginatorModule,
+    MatButtonModule, 
+    MatDialogModule,
+    MatDividerModule,
+     MatIconModule,
+     MatSelectModule,
+     MatCardModule, 
   ],
+  exports: [DisplayMenu],
   providers: [ HttpClient, 
     { provide : HTTP_INTERCEPTORS, useClass : JwtInterceptor, multi : true }],
   bootstrap: [AppComponent]

@@ -38,6 +38,7 @@ export class TodoStartComponent implements OnInit , OnDestroy {
    );
 
    this.displayTodoStart()
+   console.log(this.TodoGameList)
  }
 
   getTodoByid(id : string){
@@ -52,7 +53,7 @@ export class TodoStartComponent implements OnInit , OnDestroy {
        
        })
   
-       this.TodoGameList = []
+      //  this.TodoGameList = []
   }
 
   displayTodoStart(){
@@ -72,7 +73,7 @@ export class TodoStartComponent implements OnInit , OnDestroy {
   }
 
 
-  drop(event: CdkDragDrop<string[]> ) {
+  drop(event: CdkDragDrop<{name: string; imageUrl: string}[]> ) {
     moveItemInArray(this.TodoGameList, event.previousIndex, event.currentIndex);
     
   

@@ -1,0 +1,15 @@
+  <ul  *ngFor="let item of todos" >
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Todolist
+</div>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="http://localhost:4200/todo/start" data-toggle="collapse" data-target="#collapseTwo"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+        <button mat-button (click)="displayOneTodo(item.id)"> <span>{{item.name}}</span></button>
+    </a>
+
+</li>
+
+</ul>

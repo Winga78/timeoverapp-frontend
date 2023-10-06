@@ -1,4 +1,4 @@
-<app-index-component>
+  <input type="text" [formControl]="myControl" placeholder="Rechercher un jeu">
 <ul>
     <li *ngFor="let game of filteredOptions ; let x = index">
         <div id = "game">
@@ -10,14 +10,10 @@
   
   </ul>
 
-
-  
-    <input type="text" [formControl]="myControl" placeholder="Rechercher un jeu">
-    
-  
   <div  *ngIf= "TodoGameList.length !== 0 ">
-    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let g of TodoGameList ; let x = index" cdkDrag>{{g.name}}</div>
+    <div cdkDropList  class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let g of TodoGameList ; let x = index" cdkDrag>{{g.name}}
+        <img *cdkDragPreview [src]="g.imageUrl" [alt]="g.title">
+      </div>
     </div>
     </div>
-  </app-index-component>

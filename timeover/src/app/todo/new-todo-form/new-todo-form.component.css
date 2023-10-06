@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  
+ /* Stylisation pour la liste de suggestions */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+/* Stylisation pour l'image miniature du jeu */
+#game img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.modal-todo{
+    width: 500px;
+    height: 500px;
+    
+}
+

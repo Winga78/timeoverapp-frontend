@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Game } from '../Model/game';
 import { TodoService } from '../service/todo.service';
 import { Todo } from '../Model/todo';
 import { UserService } from '../service/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,29 +11,30 @@ import { UserService } from '../service/user.service';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit {
 
-  todo : Todo = {
-    name : '' ,
-    games : [],
-    user : '',
-  }
+  todo : Todo[] = []
  
 
 
-  constructor(private todoService: TodoService, private userService : UserService ) {}
+  constructor(private todoService: TodoService, private userService : UserService, private router : Router) {}
 
 
-  createTodo(){
+  displayTodos(){
     this.userService.getProfil().subscribe((data)=> {
       
-        this.todo.user = data.sub
-
-        this.todoService.createTodo(this.todo).subscribe(()=>{
-          console.log("ok")
+        this.todoService.getTodoByidUser(data.sub).subscribe((todo_user_data)=>{
+          this.todo = todo_user_data
         })
     })
    
+}
+
+displayOneTodo(idTodo : any ){
+  this.router.navigate(['todo', idTodo]);
+}
+ngOnInit(): void {
+  this.displayTodos()
 }
 
 }
